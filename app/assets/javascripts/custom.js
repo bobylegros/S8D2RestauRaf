@@ -26,6 +26,7 @@ $(function(){
      $(".slideshow ul").animate({marginLeft:-350},800,function(){
         $(this).css({marginLeft:0}).find("li:last").after($(this).find("li:first"));
      })
+     // Timer vitesse de rotation
   }, 2500);
 });
 
@@ -34,28 +35,26 @@ $(function(){
 
 
 $(document).ready(function () {
-    //rotation speed and timer
-    var speed = 3000;
+    // Timer vitesse de rotation
+    var speed = 2800;
 
     var run = setInterval(rotate, speed);
     var slides = $('.slide');
     var container = $('#slides ul');
     var elm = container.find(':first-child').prop("tagName");
     var item_width = container.width();
-    var previous = 'prev'; //id of previous button
-    var next = 'next'; //id of next button
-    slides.width(item_width); //set the slides to the correct pixel width
+    var previous = 'prev'; //id du bouton précédent
+    var next = 'next'; //id du bouton next
+    slides.width(item_width); //définit les slides à la bonne largeur de pixel
     container.parent().width(item_width);
-    container.width(slides.length * item_width); //set the slides container to the correct total width
+    container.width(slides.length * item_width);
     container.find(elm + ':first').before(container.find(elm + ':last'));
     resetSlides();
 
 
-    //if user clicked on prev button
+    //L'utilisateur clique sur le bouton Précédent
 
     $('#buttons a').click(function (e) {
-        //slide the item
-
         if (container.is(':animated')) {
             return false;
         }
@@ -76,13 +75,11 @@ $(document).ready(function () {
                 resetSlides();
             });
         }
-
-        //cancel the link behavior
         return false;
 
     });
 
-    //if mouse hover, pause the auto rotation, otherwise rotate it
+    // Si la sourie est sur la photo, cela stop la rotation auto. Si elle la quitte elle se relance.
     container.parent().mouseenter(function () {
         clearInterval(run);
     }).mouseleave(function () {
@@ -91,15 +88,14 @@ $(document).ready(function () {
 
 
     function resetSlides() {
-        //and adjust the container so current is in the frame
         container.css({
             'left': -1 * item_width
         });
     }
 
 });
-//a simple function to click next link
-//a timer will call this function, and the rotation will begin
+// La fonction qui appelle la photo d'après.
+// Le Timer va l'appel pour lancer la rotation
 
 function rotate() {
     $('#next').click();
