@@ -41,14 +41,14 @@ $(document).ready(function () {
     var run = setInterval(rotate, speed);
     var slides = $('.slide');
     var container = $('#slides ul');
-    var elm = container.find(':first-child').prop("tagName");
+    var pom = container.find(':first-child').prop("tagName");
     var item_width = container.width();
     var previous = 'prev'; //id du bouton précédent
     var next = 'next'; //id du bouton next
     slides.width(item_width); //définit les slides à la bonne largeur de pixel
     container.parent().width(item_width);
     container.width(slides.length * item_width);
-    container.find(elm + ':first').before(container.find(elm + ':last'));
+    container.find(pom + ':first').before(container.find(pom + ':last'));
     resetSlides();
 
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
             container.stop().animate({
                 'left': 0
             }, 1500, function () {
-                container.find(elm + ':first').before(container.find(elm + ':last'));
+                container.find(pom + ':first').before(container.find(pom + ':last'));
                 resetSlides();
             });
         }
@@ -71,7 +71,7 @@ $(document).ready(function () {
             container.stop().animate({
                 'left': item_width * -2
             }, 1500, function () {
-                container.find(elm + ':last').after(container.find(elm + ':first'));
+                container.find(pom + ':last').after(container.find(pom + ':first'));
                 resetSlides();
             });
         }
