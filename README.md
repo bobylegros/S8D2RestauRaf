@@ -4,4 +4,4 @@
 
 #### C'est pas super beau, mais ça fonctionne.
 #### Si PB relancer la page mais normalement pas de souci.
-##### PS la Map est int une vrai ;)
+##### PS la Map est une vrai intégration de Google Map ;)
